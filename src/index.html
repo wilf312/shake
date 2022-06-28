@@ -27,6 +27,8 @@
         window.addEventListener(
           "deviceorientation",
           function (event) {
+            log("fire deviceorientation");
+
             // alpha: rotation around z-axis
             var rotateDegrees = event.alpha;
             // gamma: left to right
