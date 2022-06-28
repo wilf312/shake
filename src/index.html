@@ -34,7 +34,13 @@
             // beta: front back motion
             var frontToBack = event.beta;
 
-            handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
+            log(
+              JSON.stringify(
+                { frontToBack, leftToRight, rotateDegrees },
+                null,
+                2
+              )
+            );
           },
           true
         );
