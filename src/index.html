@@ -23,32 +23,20 @@
         $log.textContent = `${string}\n${$log.textContent}`;
       };
 
-      if (window.DeviceOrientationEvent) {
+      if ("ondevicemotion" in window) {
         window.addEventListener(
-          "deviceorientation",
+          "devicemotion",
           function (event) {
-            log("fire deviceorientation");
+            log("fire devicemotion");
+            const current = event.accelerationIncludingGravity;
 
-            // alpha: rotation around z-axis
-            var rotateDegrees = event.alpha;
-            // gamma: left to right
-            var leftToRight = event.gamma;
-            // beta: front back motion
-            var frontToBack = event.beta;
-
-            log(
-              JSON.stringify(
-                { frontToBack, leftToRight, rotateDegrees },
-                null,
-                2
-              )
-            );
+            log(JSON.stringify({ ...current }, null, 2));
           },
           true
         );
-        log(`set event window.DeviceOrientationEvent `);
+        log(`set event window.devicemotionEvent `);
       } else {
-        log(`window.DeviceOrientationEvent not found`);
+        log(`window.devicemotionEvent not found`);
       }
     </script>
   </body>
